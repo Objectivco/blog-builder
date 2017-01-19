@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Template loader for MG Blog Builder
+ * Template loader for OBJ Blog Builder
  *
  * Only need to specify class properties here.
  *
  */
-class MG_Blog_Builder_Template_Loader extends Gamajo_Template_Loader {
+class OBJ_Blog_Builder_Template_Loader extends Gamajo_Template_Loader {
 
 	/**
 	 * Prefix for filter names.
@@ -14,7 +14,7 @@ class MG_Blog_Builder_Template_Loader extends Gamajo_Template_Loader {
 	 * @since 1.0.0
 	 * @type string
 	 */
-	protected $filter_prefix = 'mg';
+	protected $filter_prefix = 'obj';
 
 	/**
 	 * Directory name where custom templates for this plugin should be found in the theme.
@@ -30,6 +30,6 @@ class MG_Blog_Builder_Template_Loader extends Gamajo_Template_Loader {
 	 * @since 1.0.0
 	 * @type string
 	 */
-	protected $plugin_directory = MG_BLOG_BUILDER_PLUGIN_DIR;
+	protected $plugin_directory = OBJ_BLOG_BUILDER_PLUGIN_DIR;
 
 }

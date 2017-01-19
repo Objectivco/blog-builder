@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Settings class to create each field type
  */
-class MG_Blog_Builder_Setting_Field {
+class OBJ_Blog_Builder_Setting_Field {
 
     public function __construct( $slug, $atts ) {
 

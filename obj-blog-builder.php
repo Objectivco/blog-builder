@@ -1,14 +1,14 @@
 <?php
 /*
-Plugin Name: MG Blog Builder
+Plugin Name: Objectiv Blog Builder
 Plugin URI: http://www.mooreandgiles.com
-Description: Easily build components for MG's blog
+Description: Easily build components for your blog
 Version: 1.0.0
-Author: CGD Inc.
-Author URI: http://cgd.io
+Author: Objectiv
+Author URI: http://objectiv.co
 
 ------------------------------------------------------------------------
-Copyright 2009-2014 Clif Griffin Development Inc.
+Copyright 2009-2016 Objectiv
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,14 +29,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MG_BLOG_BUILDER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'OBJ_BLOG_BUILDER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 require_once( 'inc/class-gamajo-template-loader.php' );
-require_once( 'inc/class-mg-blog-builder-template-loader.php' );
-require_once( 'inc/class-mg-blog-builder-setting-field.php' );
-require_once( 'inc/class-mg-blog-builder-create-shortcode.php' );
+require_once( 'inc/class-obj-blog-builder-template-loader.php' );
+require_once( 'inc/class-obj-blog-builder-setting-field.php' );
+require_once( 'inc/class-obj-blog-builder-create-shortcode.php' );
 
-class MG_Blog_Builder {
+class OBJ_Blog_Builder {
     public function __construct() {
         $this->file = __FILE__;
         $this->version = 1.0;
@@ -48,8 +48,8 @@ class MG_Blog_Builder {
         add_action( 'admin_footer', array( $this, 'popup' ) );
 		add_action( 'init', array( $this, 'create_shortcodes' ) );
 
-		add_image_size( 'mg_three_four_image', 530, 795, true );
-		add_image_size( 'mg_one_one_image', 530, 530, true );
+		add_image_size( 'obj_three_four_image', 530, 795, true );
+		add_image_size( 'obj_one_one_image', 530, 530, true );
 
     }
 
@@ -223,7 +223,7 @@ class MG_Blog_Builder {
 			)
         );
 
-        $shortcodes = apply_filters( 'mg_blog_builder_shortcodes', $shortcodes );
+        $shortcodes = apply_filters( 'obj_blog_builder_shortcodes', $shortcodes );
 
         return $shortcodes;
 
@@ -233,14 +233,14 @@ class MG_Blog_Builder {
      * Add media button for regular edit screen
      */
     public function add_media_button() {
-        echo '<a href="#" id="insert-blog-component" class="mg-blog-builder-button button"><span class="mg-admin-button-icon dashicons dashicons-text"></span> Add Blog Component</a>';
+        echo '<a href="#" id="insert-blog-component" class="obj-blog-builder-button button"><span class="obj-admin-button-icon dashicons dashicons-text"></span> Add Blog Component</a>';
     }
 
     /**
      * Add media button for full screen mode
      */
     public function fs_add_media_button() {
-        echo '<a href="#" id="insert-blog-component" class="button"><span class="aesop-admin-button-icon dashicons dashicons-text"></span> Add Blog Component</a>';
+        echo '<a href="#" id="insert-blog-component" class="obj-blog-builder-button button"><span class="obj-admin-button-icon dashicons dashicons-text"></span> Add Blog Component</a>';
     }
 
     /**
@@ -254,12 +254,12 @@ class MG_Blog_Builder {
         $blog_builder_load_on = apply_filters( 'blog_builder_loads_on', array( 'post.php' ) );
 
         if ( in_array( $pagenow, $blog_builder_load_on ) ) { ?>
-            <div id="mg-blog-builder-wrap">
-                <div id="mg-blog-builder">
+            <div id="obj-blog-builder-wrap">
+                <div id="obj-blog-builder">
                     <a id="blog-builder-close" class="media-modal-close blog-builder-close-modal" href="#">
                         <span class="media-modal-icon"><span class="screen-reader-text">Close builder popup</span></span>
                     </a>
-                    <div id="mg-blog-builder-panel">
+                    <div id="obj-blog-builder-panel">
                         <a id="blog-builder-panel-close" class="media-modal-close blog-builder-close-panel" href="#">
                             <span class="media-modal-icon"><span class="screen-reader-text">Close settings panel</span></span>
                         </a>
@@ -267,7 +267,7 @@ class MG_Blog_Builder {
                             <?php foreach( $shortcodes as $key => $shortcode ): ?>
                                 <div id="settings-<?php echo $key; ?>">
                                     <h3><?php echo $shortcode['name']; ?> Settings</h3>
-                                    <?php new MG_Blog_Builder_Setting_Field( $key, $shortcode['atts'] ); ?>
+                                    <?php new OBJ_Blog_Builder_Setting_Field( $key, $shortcode['atts'] ); ?>
                                 </div>
                             <?php endforeach; ?>
 							<input type="hidden" id="blog-builder-shortcode-result" val="" />
@@ -276,7 +276,7 @@ class MG_Blog_Builder {
                             <a href="#" id="blog-builder-insert" class="button button-primary">Insert Componet</a>
                         </footer>
                     </div>
-                    <div id="mg-blog-builder-content">
+                    <div id="obj-blog-builder-content">
                         <div class="blog-builder-inner-wrap">
                             <ul class="blog-builder-modules">
                                 <?php foreach( $shortcodes as $key => $shortcode ): ?>
@@ -299,11 +299,11 @@ class MG_Blog_Builder {
 
 		$shortcodes = $this->shortcodes();
 		foreach( $shortcodes as $key => $shortcode ) {
-			new MG_Blog_Builder_Create_Shortcode( $key, $shortcode, __FILE__ );
+			new OBJ_Blog_Builder_Create_Shortcode( $key, $shortcode, __FILE__ );
 		}
 
 	}
 
 }
 
-$mg_blog_builder = new MG_Blog_Builder();
+$obj_blog_builder = new OBJ_Blog_Builder();

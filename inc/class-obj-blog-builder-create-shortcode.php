@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Settings class to create each field type
  */
-class MG_Blog_Builder_Create_Shortcode {
+class OBJ_Blog_Builder_Create_Shortcode {
 
     public function __construct( $slug, $shortcode, $file ) {
 
@@ -20,7 +20,7 @@ class MG_Blog_Builder_Create_Shortcode {
     }
 
     public function create_shortcode( $atts ) {
-        $template_loader = new MG_Blog_Builder_Template_Loader;
+        $template_loader = new OBJ_Blog_Builder_Template_Loader;
         $defaults = array();
 
         foreach ( $this->shortcode['atts'] as $key => $att ) {
