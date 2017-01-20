@@ -49,7 +49,7 @@ class OBJ_Blog_Builder {
 		add_action( 'init', array( $this, 'create_shortcodes' ) );
 
 		add_image_size( 'obj_three_four_image', 530, 795, true );
-		add_image_size( 'obj_one_one_image', 530, 530, true );
+		add_image_size( 'obj_one_one_image', 600, 600, true );
 
     }
 
@@ -93,6 +93,10 @@ class OBJ_Blog_Builder {
 	public function scripts_styles() {
 		wp_enqueue_style( 'blog-public-css', plugins_url( '/assets/css/public.css', $this->file ), false, $this->version );
 		wp_enqueue_script( 'blog-public', plugins_url( '/assets/js/public.js', $this->file ), array( 'jquery' ), $this->version, true );
+
+		if ( $this->has_shortcode( 'blog_module_gallery-1-by-2' ) || $this->has_shortcode( 'blog_module_gallery-2-by-2' ) ) {
+			wp_enqueue_script( 'img-liquid', plugins_url( '/vendor/imgLiquid/js/imgLiquid-min.js', $this->file ), array( 'jquery' ), $this->version, true );
+		}
 
 		if ( $this->has_shortcode( 'blog_module_tweet' ) ) {
 			wp_enqueue_script( 'twitter-intent', 'https://platform.twitter.com/widgets.js', array(), $this->version, true );

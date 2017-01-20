@@ -8,32 +8,33 @@
     overflow: auto;
 }
 
-.blog-builder-image img {
+.blog-builder-image.one-one,
+.blog-builder-image.three-four {
     display: block;
-}
-
-.blog-builder-module-grid .blog-builder-image {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     float: left;
+    height: 0;
+    padding-bottom: 50%;
     width: 50%;
 }
 
-.blog-builder-module-grid .blog-builder-image.three-four {
-    height: 750px;
-}
-
-.blog-builder-module-grid .blog-builder-image.one-one {
-    height: 530px;
+.blog-builder-image.three-four {
+    padding-bottom: 75%;
 }
 
 .blog-builder-tweet {
     display: block;
-    font-size: 30px;
-    margin: 70px auto;
-    max-width: 800px;
+    font-size: 24px;
+    margin: 40px auto;
+    max-width: 700px;
     text-align: center;
+}
+
+@media only screen and (min-width:900px) {
+    .blog-builder-tweet {
+        font-size: 30px;
+        margin: 70px auto;
+        max-width: 800px;
+    }
 }
 
 .blog-builder-inline-tweet {
